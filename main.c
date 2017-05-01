@@ -5,6 +5,7 @@
 #include <xc.h>
 #define _XTAL_FREQ 4000000
 #include "lcd.h";
+#include "teclado.h";
 
 // CONFIG
 #pragma config FOSC = EXTRCCLK  // Oscillator Selection bits (RC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, Resistor and Capacitor on RA7/OSC1/CLKIN)
@@ -133,11 +134,11 @@ void digitarNumero() {
 }
 
 void capturaLetra() {
-    entrada = '';
+    entrada = tc_letra(0);
 }
 
 void capturaNumero() {
-    entrada = '';
+    entrada = tc_tecla(0);
 }
 
 void apaga() {
