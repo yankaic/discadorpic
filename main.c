@@ -50,7 +50,21 @@ int main() {
     lcd_init();
     lcd_cmd(L_CLR);
 
-    while (1);
+    while (1){
+        switch (estado){
+            case 0:
+                discar();
+                break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+        }
+    }
 }
 
 void interrupt interrupcao() {
