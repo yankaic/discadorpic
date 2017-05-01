@@ -15,13 +15,13 @@
 #pragma config CPD = OFF        // Data EE Memory Code Protection bit (Data memory code protection off)
 #pragma config CP = OFF    
 
-void interrupt Interrupcao();
+void interrupt interrupcao();
 
 int main() {
 
 }
 
-void interrupt Interrupcao() {
+void interrupt interrupcao() {
     
 }
 
