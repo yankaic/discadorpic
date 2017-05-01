@@ -1,3 +1,7 @@
+// Engenharia de Sistemas Embarcados
+// Carlos Hatus
+// Yan Kaic
+
 #include <xc.h>
 #define _XTAL_FREQ 4000000
 
