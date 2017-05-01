@@ -10,7 +10,14 @@
 #pragma config LVP = OFF        // Low-Voltage Programming Enable bit (RB4/PGM pin has digital I/O function, HV on MCLR must be used for programming)
 #pragma config CPD = OFF        // Data EE Memory Code Protection bit (Data memory code protection off)
 #pragma config CP = OFF    
+
+void interrupt Interrupcao();
+
 int main() {
 
+}
+
+void interrupt Interrupcao() {
+    
 }
 
