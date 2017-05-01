@@ -16,20 +16,26 @@ void main(void) {
     OPTION_REG = 128;
 
     unsigned char valor;
-    unsigned char end = 0;
-    //eeprom_write(end, valor);
-
-    //char valorb = eeprom_read(end);
+    unsigned char end;
     char valorb;
 
     while (1) {
-        for (int i = 0; i < 256; i++) {
-            valor = i;
+        // escrevendo
+        for (int i = 0; i <= 10; i++) {
+            valor = i + 7;
+            end = i;
             eeprom_write(end, valor);
-            __delay_ms(1000);
+        }
+        // lendo
+        for (int i = 0; i < 10; i++) {
+            end = i;
             valorb = eeprom_read(end);
+            __delay_ms(500);
             PORTB = valorb;
         }
+        // acaba
+        __delay_ms(500);
+        PORTB = 0b11111111;
     }
 
     return;
