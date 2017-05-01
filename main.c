@@ -25,7 +25,7 @@ void desativaModo();
 void testaModo();
 void digitarNome();
 void digitarNumero();
-void capturaNome();
+void capturaLetra();
 void capturaNumero();
 void apaga();
 void buscar();
@@ -53,12 +53,15 @@ int main() {
     while (1){
         switch (estado){
             case 0:
+                capturaNumero(); // espera o usuario digitar
                 discar();
                 break;
             case 1:
+                capturaNumero(); // espera o usuario digitar
                 adicionar();
                 break;
             case 2:
+                break;
             case 3:
                 digitarNumero();
                 break;
@@ -66,9 +69,13 @@ int main() {
                 digitarNome();
                 break;
             case 5:
+                break;
             case 6:
+                break;
             case 7:
+                break;
             case 8:
+                break;
         }
     }
 }
@@ -125,12 +132,12 @@ void digitarNumero() {
 
 }
 
-void capturaNome() {
-
+void capturaLetra() {
+    entrada = '';
 }
 
 void capturaNumero() {
-
+    entrada = '';
 }
 
 void apaga() {
