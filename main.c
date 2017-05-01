@@ -4,6 +4,7 @@
 
 #include <xc.h>
 #define _XTAL_FREQ 4000000
+#include "lcd.h";
 
 // CONFIG
 #pragma config FOSC = EXTRCCLK  // Oscillator Selection bits (RC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, Resistor and Capacitor on RA7/OSC1/CLKIN)
@@ -18,10 +19,21 @@
 void interrupt interrupcao();
 
 int main() {
+    unsigned char i, tmp;
 
+    CMCON = 0x07;
+    TRISA = 0x30;
+    TRISB = 0xE7;
+
+    PORTA = 0xFE;
+    PORTB = 0x00;
+    lcd_init();
+    lcd_cmd(L_CLR);
+    
+    while(1);
 }
 
 void interrupt interrupcao() {
-    
+
 }
 
