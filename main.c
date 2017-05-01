@@ -17,6 +17,7 @@
 #pragma config CP = OFF    
 
 void interrupt interrupcao();
+void selecionar();
 void discar();
 void adicionar();
 void ativaModo();
@@ -31,7 +32,11 @@ void buscar();
 void armazenar();
 void chamar();
 void desligar();
+
+// Variáveis globais
 bit modo = 0b0;
+char entrada; // armazena o ultimo caractere digitado.
+int estado = 0;
 
 int main() {
     unsigned char i, tmp;
@@ -53,11 +58,11 @@ void interrupt interrupcao() {
 }
 
 void discar() {
-
+    desativaModo();
 }
 
 void adicionar() {
-
+    ativaModo();
 }
 
 void ativaModo() {
@@ -107,4 +112,3 @@ void chamar() {
 void desligar() {
 
 }
-
