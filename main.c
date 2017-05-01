@@ -17,6 +17,21 @@
 #pragma config CP = OFF    
 
 void interrupt interrupcao();
+void discar();
+void adicionar();
+void ativaModo();
+void desativaModo();
+void testaModo();
+void digitarNome();
+void digitarNumero();
+void capturaNome();
+void capturaNumero();
+void apaga();
+void buscar();
+void armazenar();
+void chamar();
+void desligar();
+bit modo = 0b0;
 
 int main() {
     unsigned char i, tmp;
@@ -29,11 +44,67 @@ int main() {
     PORTB = 0x00;
     lcd_init();
     lcd_cmd(L_CLR);
-    
-    while(1);
+
+    while (1);
 }
 
 void interrupt interrupcao() {
+
+}
+
+void discar() {
+
+}
+
+void adicionar() {
+
+}
+
+void ativaModo() {
+    modo = 0b1;
+}
+
+void desativaModo() {
+    modo = 0b0;
+}
+
+void testaModo() {
+
+}
+
+void digitarNome() {
+
+}
+
+void digitarNumero() {
+
+}
+
+void capturaNome() {
+
+}
+
+void capturaNumero() {
+
+}
+
+void apaga() {
+
+}
+
+void buscar() {
+
+}
+
+void armazenar() {
+
+}
+
+void chamar() {
+
+}
+
+void desligar() {
 
 }
 
