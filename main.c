@@ -56,9 +56,15 @@ int main() {
                 discar();
                 break;
             case 1:
+                adicionar();
+                break;
             case 2:
             case 3:
+                digitarNumero();
+                break;
             case 4:
+                digitarNome();
+                break;
             case 5:
             case 6:
             case 7:
@@ -72,11 +78,31 @@ void interrupt interrupcao() {
 }
 
 void discar() {
-    desativaModo();
+    switch(entrada){
+        case '*':
+            estado = 1;
+            break;
+        case '#':
+            desativaModo();
+            estado = 3; // digitar numero
+            break;
+        default:
+            break;
+    }
 }
 
 void adicionar() {
-    ativaModo();
+    switch(entrada){
+        case '*':
+            estado = 0;
+            break;
+        case '#':
+            ativaModo();
+            estado = 4; // digitar nome
+            break;
+        default:
+            break;
+    }
 }
 
 void ativaModo() {
