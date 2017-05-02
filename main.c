@@ -23,7 +23,6 @@ void discar();
 void adicionar();
 void ativaModo();
 void desativaModo();
-void testaModo();
 void digitarNome();
 void digitarNumero();
 void capturaLetra();
@@ -38,6 +37,10 @@ void desligar();
 bit modo = 0b0;
 char entrada; // armazena o ultimo caractere digitado.
 int estado = 0;
+unsigned char numero[9];
+unsigned char nome[9];
+unsigned char endereco;
+unsigned char quantidade;
 
 int main() {
     unsigned char i, tmp;
@@ -51,8 +54,12 @@ int main() {
     lcd_init();
     lcd_cmd(L_CLR);
 
-    while (1){
-        switch (estado){
+    endereco = 0x0;
+    eeprom_write(endereco, endereco++);
+
+    while (1) {
+        endereco = eeprom_read(0x0);
+        switch (estado) {
             case 0:
                 capturaNumero(); // espera o usuario digitar
                 discar();
@@ -61,8 +68,6 @@ int main() {
                 capturaNumero(); // espera o usuario digitar
                 adicionar();
                 break;
-            case 2:
-                break;
             case 3:
                 digitarNumero();
                 break;
@@ -70,12 +75,12 @@ int main() {
                 digitarNome();
                 break;
             case 5:
+                buscar();
                 break;
             case 6:
+                armazenar();
                 break;
-            case 7:
-                break;
-            case 8:
+            default:
                 break;
         }
     }
@@ -86,7 +91,7 @@ void interrupt interrupcao() {
 }
 
 void discar() {
-    switch(entrada){
+    switch (entrada) {
         case '*':
             estado = 1;
             break;
@@ -100,7 +105,7 @@ void discar() {
 }
 
 void adicionar() {
-    switch(entrada){
+    switch (entrada) {
         case '*':
             estado = 0;
             break;
@@ -121,16 +126,46 @@ void desativaModo() {
     modo = 0b0;
 }
 
-void testaModo() {
-
-}
-
 void digitarNome() {
-
+    capturaLetra();
+    int cont = 0;
+    while (entrada != '#' && cont < 9) {
+        if (entrada == '*' && cont > 0) {
+            cont--;
+            // apaga valor da tela
+        }
+        nome[cont] = entrada;
+        capturaLetra();
+        cont++;
+    }
+    if (cont < 9) {
+        for (; cont < 9; cont++) {
+            nome[cont] = ' ';
+        }
+    }
+    estado = 3;
 }
 
 void digitarNumero() {
-
+    capturaNumero();
+    int cont = 0;
+    while (entrada != '#' && cont < 9) {
+        if (entrada == '*' && cont > 0) {
+            cont--;
+            // apaga valor da tela
+        }
+        numero[cont] = entrada;
+        capturaNumero();
+        cont++;
+    }
+    if (cont < 9) {
+        for (; cont < 9; cont++) {
+            numero[cont] = ' ';
+        }
+    }
+    if (modo) {
+        estado = 6;
+    } else estado = 5;
 }
 
 void capturaLetra() {
@@ -146,17 +181,51 @@ void apaga() {
 }
 
 void buscar() {
-
+    unsigned char end = 0x1;
+    bit achou = 0b0;
+    while (end < endereco) {
+        achou = 0b1;
+        for (int i = 0; i < 9; i++) {
+            int nun = eeprom_read(end + i);
+            if (num != numero[i]) {
+                achou = 0b0;
+                break;
+            }
+        }
+        end += 9;
+        if (achou) {
+            for (int i = 0; i < 9; i++) {
+                nome[i] = eeprom_read(end);
+                end++;
+                break;
+            }
+        } else end += 9;
+    }
+    if (achou) {
+        chamar();
+    } else {
+        // escreve desconhecido
+    }
 }
 
 void armazenar() {
-
+    for (int i = 0; i < 9; i++) {
+        eeprom_write(endereco, numero[i]);
+        endereco++;
+    }
+    for (int i = 0; i < 9; i++) {
+        eeprom_write(endereco, nome[i]);
+        endereco++;
+    }
+    eeprom_write(0x0, endereco);
 }
 
 void chamar() {
-
+    __delay_ms(5000);
+    desligar();
 }
 
 void desligar() {
-
+    __delay_ms(1000);
+    estado = 0;
 }
