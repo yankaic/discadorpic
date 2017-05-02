@@ -84,6 +84,7 @@ int main() {
                 break;
         }
     }
+    return 0;
 }
 
 void interrupt interrupcao() {
@@ -182,11 +183,11 @@ void apaga() {
 
 void buscar() {
     unsigned char end = 0x1;
-    bit achou = 0b0;
+    static bit achou = 0b0;
     while (end < endereco) {
         achou = 0b1;
         for (int i = 0; i < 9; i++) {
-            int nun = eeprom_read(end + i);
+            int num = eeprom_read(end + i);
             if (num != numero[i]) {
                 achou = 0b0;
                 break;
