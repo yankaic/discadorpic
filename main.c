@@ -48,8 +48,9 @@ int main() {
     lcd_init();
     lcd_cmd(L_CLR);
 
+    eeprom_write(0x0, 0);
     endereco = 0x0;
-    eeprom_write(endereco, endereco++);
+    endereco = eeprom_read(endereco);
 
     while (1) {
         maquina();
@@ -148,15 +149,17 @@ void digitarNome() {
     lcd_str("#########");
     lcd_cmd(L_L2);
 
-    entrada = tc_letra(0);
+    entrada = ' ';
     int cont = 0;
     while (entrada != '#' && cont < 9) {
+        entrada = tc_letra(0);
         if (entrada == '*' && cont > 0) {
             cont--;
-            // apaga valor da tela
+
+            lcd_cmd(L_L2 + cont);
+            continue;
         }
         nome[cont] = entrada;
-        entrada = tc_letra(0);
         cont++;
         lcd_dat(entrada);
     }
@@ -176,16 +179,17 @@ void digitarNumero() {
     lcd_cmd(L_L2);
     lcd_str("#########");
     lcd_cmd(L_L2);
-    entrada = tc_tecla(0);
+    entrada = ' ';
 
     int cont = 0;
     while (entrada != '#' && cont < 9) {
+        entrada = tc_tecla(0);
         if (entrada == '*' && cont > 0) {
             cont--;
-            // apaga valor da tela
+            lcd_cmd(L_L2 + cont);
+            continue;
         }
         numero[cont] = entrada;
-        entrada = tc_tecla(0);
         cont++;
         lcd_dat(entrada);
     }
@@ -207,21 +211,21 @@ void buscar() {
     static bit achou = 0b0;
     while (end < endereco) {
         achou = 0b1;
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9 && numero[i] != '\0'; i++) {
             int num = eeprom_read(end + i);
             if (num != numero[i]) {
                 achou = 0b0;
                 break;
             }
         }
-        end += 9;
+        end += 10;
         if (achou) {
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < 10; i++) {
                 nome[i] = eeprom_read(end);
                 end++;
-                break;
             }
-        } else end += 9;
+            break;
+        } else end += 10;
     }
     if (!achou) {
         nome[0] = 'u';
@@ -242,11 +246,11 @@ void armazenar() {
     lcd_cmd(L_L1);
     lcd_str("Armazenando...");
 
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 10; i++) {
         eeprom_write(endereco, numero[i]);
         endereco++;
     }
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 10; i++) {
         eeprom_write(endereco, nome[i]);
         endereco++;
     }
