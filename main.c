@@ -4,6 +4,7 @@
 
 #include <xc.h>
 #define _XTAL_FREQ 4000000
+#include "common.h";
 #include "lcd.h";
 #include "teclado.h";
 
@@ -18,27 +19,20 @@
 #pragma config CP = OFF    
 
 void interrupt interrupcao();
-void selecionar();
 void discar();
 void adicionar();
 void ativaModo();
 void desativaModo();
 void digitarNome();
 void digitarNumero();
-void capturaLetra();
-void capturaNumero();
-void apaga();
 void buscar();
 void armazenar();
 void chamar();
 void desligar();
+void maquina();
 
 // Variáveis globais
 bit modo = 0b0;
-char entrada; // armazena o ultimo caractere digitado.
-int estado = 0;
-unsigned char numero[9];
-unsigned char nome[9];
 unsigned char endereco;
 unsigned char quantidade;
 
@@ -58,31 +52,7 @@ int main() {
     eeprom_write(endereco, endereco++);
 
     while (1) {
-        endereco = eeprom_read(0x0);
-        switch (estado) {
-            case 0:
-                capturaNumero(); // espera o usuario digitar
-                discar();
-                break;
-            case 1:
-                capturaNumero(); // espera o usuario digitar
-                adicionar();
-                break;
-            case 3:
-                digitarNumero();
-                break;
-            case 4:
-                digitarNome();
-                break;
-            case 5:
-                buscar();
-                break;
-            case 6:
-                armazenar();
-                break;
-            default:
-                break;
-        }
+        maquina();
     }
     return 0;
 }
@@ -91,28 +61,71 @@ void interrupt interrupcao() {
 
 }
 
-void discar() {
-    switch (entrada) {
-        case '*':
-            estado = 1;
+void maquina() {
+    endereco = eeprom_read(0x0);
+    switch (estado) {
+        case SELECIONE_DISCAR:
+            discar();
             break;
-        case '#':
-            desativaModo();
-            estado = 3; // digitar numero
+        case SELECIONE_ADICIONAR:
+            adicionar();
+            break;
+        case DIGITAR_NUMERO:
+            digitarNumero();
+            break;
+        case DIGITAR_NOME:
+            digitarNome();
+            break;
+        case BUSCANDO:
+            buscar();
+            break;
+        case CHAMANDO:
+            chamar();
+            break;
+        case CONTATO_ADICIONADO:
+            armazenar();
+            break;
+        case DESLIGANDO:
+            desligar();
             break;
         default:
             break;
     }
 }
 
-void adicionar() {
+void discar() {
+    lcd_cmd(L_CLR);
+    lcd_cmd(L_L1);
+    lcd_str("Discar");
+    entrada = tc_tecla(0);
+
     switch (entrada) {
         case '*':
-            estado = 0;
+            estado = SELECIONE_ADICIONAR;
+            break;
+        case '#':
+            desativaModo();
+            estado = DIGITAR_NUMERO; // digitar numero
+            break;
+        default:
+            break;
+    }
+
+}
+
+void adicionar() {
+    lcd_cmd(L_CLR);
+    lcd_cmd(L_L1);
+    lcd_str("Adicionar");
+    entrada = tc_tecla(0);
+
+    switch (entrada) {
+        case '*':
+            estado = SELECIONE_DISCAR;
             break;
         case '#':
             ativaModo();
-            estado = 4; // digitar nome
+            estado = DIGITAR_NOME; // digitar nome
             break;
         default:
             break;
@@ -128,7 +141,14 @@ void desativaModo() {
 }
 
 void digitarNome() {
-    capturaLetra();
+    lcd_cmd(L_CLR);
+    lcd_cmd(L_L1);
+    lcd_str("Digite Nome");
+    lcd_cmd(L_L2);
+    lcd_str("#########");
+    lcd_cmd(L_L2);
+
+    entrada = tc_letra(0);
     int cont = 0;
     while (entrada != '#' && cont < 9) {
         if (entrada == '*' && cont > 0) {
@@ -136,19 +156,28 @@ void digitarNome() {
             // apaga valor da tela
         }
         nome[cont] = entrada;
-        capturaLetra();
+        entrada = tc_letra(0);
         cont++;
+        lcd_dat(entrada);
     }
     if (cont < 9) {
         for (; cont < 9; cont++) {
             nome[cont] = ' ';
         }
     }
-    estado = 3;
+    nome[9] = '\0';
+    estado = DIGITAR_NUMERO;
 }
 
 void digitarNumero() {
-    capturaNumero();
+    lcd_cmd(L_CLR);
+    lcd_cmd(L_L1);
+    lcd_str("Digite Numero");
+    lcd_cmd(L_L2);
+    lcd_str("#########");
+    lcd_cmd(L_L2);
+    entrada = tc_tecla(0);
+
     int cont = 0;
     while (entrada != '#' && cont < 9) {
         if (entrada == '*' && cont > 0) {
@@ -156,29 +185,21 @@ void digitarNumero() {
             // apaga valor da tela
         }
         numero[cont] = entrada;
-        capturaNumero();
+        entrada = tc_tecla(0);
         cont++;
+        lcd_dat(entrada);
     }
     if (cont < 9) {
         for (; cont < 9; cont++) {
             numero[cont] = ' ';
         }
     }
+    numero[9] = '\0';
     if (modo) {
-        estado = 6;
-    } else estado = 5;
-}
-
-void capturaLetra() {
-    entrada = tc_letra(0);
-}
-
-void capturaNumero() {
-    entrada = tc_tecla(0);
-}
-
-void apaga() {
-
+        estado = CONTATO_ADICIONADO;
+    } else {
+        estado = BUSCANDO;
+    }
 }
 
 void buscar() {
@@ -202,14 +223,25 @@ void buscar() {
             }
         } else end += 9;
     }
-    if (achou) {
-        chamar();
-    } else {
-        // escreve desconhecido
+    if (!achou) {
+        nome[0] = 'u';
+        nome[1] = 'n';
+        nome[2] = 'k';
+        nome[3] = 'n';
+        nome[4] = 'o';
+        nome[5] = 'w';
+        nome[6] = 'n';
+        nome[7] = '\0';
+
     }
+    estado = CHAMANDO;
 }
 
 void armazenar() {
+    lcd_cmd(L_CLR);
+    lcd_cmd(L_L1);
+    lcd_str("Armazenando...");
+
     for (int i = 0; i < 9; i++) {
         eeprom_write(endereco, numero[i]);
         endereco++;
@@ -219,14 +251,32 @@ void armazenar() {
         endereco++;
     }
     eeprom_write(0x0, endereco);
+
+
+    lcd_cmd(L_CLR);
+    lcd_cmd(L_L1);
+    lcd_str("Salvo!");
+    tc_tecla(200);
+    estado = SELECIONE_DISCAR;
 }
 
 void chamar() {
-    __delay_ms(5000);
-    desligar();
+    lcd_cmd(L_CLR);
+    lcd_cmd(L_L1);
+    lcd_str("Chamando...");
+    lcd_cmd(L_L2);
+    lcd_str(nome);
+
+    while (tc_tecla(0) != '#');
+
+    estado = DESLIGANDO;
 }
 
 void desligar() {
+    lcd_cmd(L_CLR);
+    lcd_cmd(L_L1);
+    lcd_str("Desligando...");
+
     __delay_ms(1000);
-    estado = 0;
+    estado = SELECIONE_DISCAR;
 }
