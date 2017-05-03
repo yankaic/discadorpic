@@ -19,7 +19,6 @@
       <itemPath>atraso.c</itemPath>
       <itemPath>Makefile</itemPath>
       <itemPath>common.h</itemPath>
-      <itemPath>eeprom.c</itemPath>
       <itemPath>teclado.c</itemPath>
       <itemPath>teclado.h</itemPath>
     </logicalFolder>

@@ -49,7 +49,7 @@ int main() {
     lcd_cmd(L_CLR);
 
     unsigned char val = eeprom_read(0x0);
-    if (val = 255) { // endereco vazio
+    if (val = 255) { // endereco vazio só salva na primeira execução
         eeprom_write(0x0, 0x1);
         endereco = eeprom_read(0x0);
     }
@@ -167,7 +167,7 @@ void digitarNome() {
     }
     if (cont < 9) {
         for (; cont < 9; cont++) {
-            nome[cont] = '#';
+            nome[cont] = ' ';
         }
     }
     nome[9] = '\0';
@@ -197,7 +197,7 @@ void digitarNumero() {
     }
     if (cont < 9) {
         for (; cont < 9; cont++) {
-            numero[cont] = '#';
+            numero[cont] = ' ';
         }
     }
     numero[9] = '\0';
