@@ -27,73 +27,66 @@
 #include "lcd.h"
 #include "atraso.h"
 
-void lcd_wr(unsigned char val)
-{
-  unsigned char i;
+void lcd_wr(unsigned char val) {
+    unsigned char i;
 
-  LCLK=0;
+    LCLK = 0;
 
-  for(i=0;i<8;i++)
-  {
-    LDAT=((val>>(7-i))&0x01);
-    LCLK=1;
-    LCLK=0;
-  }
+    for (i = 0; i < 8; i++) {
+        LDAT = ((val >> (7 - i))&0x01);
+        LCLK = 1;
+        LCLK = 0;
+    }
 }
 
-void lcd_cmd(unsigned char val)
-{
-	LENA=1;
-        lcd_wr(val);
-        LDAT=0;
-        atraso_ms(3);
-        LENA=0;
-        atraso_ms(3);
-	LENA=1;
-}
- 
-void lcd_dat(unsigned char val)
-{
-	LENA=1;
-        lcd_wr(val);
-        LDAT=1;
-        atraso_ms(3);
-        LENA=0;
-        atraso_ms(3);
-	LENA=1;
+void lcd_cmd(unsigned char val) {
+    LENA = 1;
+    lcd_wr(val);
+    LDAT = 0;
+    atraso_ms(3);
+    LENA = 0;
+    atraso_ms(3);
+    LENA = 1;
 }
 
-void lcd_init(void)
-{
-	LENA=0;
-	LDAT=0;
-	atraso_ms(20);
-	LENA=1;
-	
-	lcd_cmd(0x30);
-	atraso_ms(5);
-	lcd_cmd(0x30);
-        atraso_ms(1);
-	lcd_cmd(L_CFG); //configura
-	lcd_cmd(L_OFF);
-	lcd_cmd(L_ON); //liga
-	lcd_cmd(L_CLR); //limpa
-	lcd_cmd(L_CFG); //configura
-        lcd_cmd(L_L1);
+void lcd_dat(unsigned char val) {
+    LENA = 1;
+    lcd_wr(val);
+    LDAT = 1;
+    atraso_ms(3);
+    LENA = 0;
+    atraso_ms(3);
+    LENA = 1;
 }
 
-void lcd_str(const char* str)
-{
- unsigned char i=0;
-  
- while(str[i])
- {
-   lcd_dat(str[i]);
-   i++;
- }  
+void lcd_init(void) {
+    LENA = 0;
+    LDAT = 0;
+    atraso_ms(20);
+    LENA = 1;
+
+    lcd_cmd(0x30);
+    atraso_ms(5);
+    lcd_cmd(0x30);
+    atraso_ms(1);
+    lcd_cmd(L_CFG); //configura
+    lcd_cmd(L_OFF);
+    lcd_cmd(L_ON); //liga
+    lcd_cmd(L_CLR); //limpa
+    lcd_cmd(L_CFG); //configura
+    lcd_cmd(L_L1);
+}
+
+void lcd_str(const char* str) {
+    unsigned char i = 0;
+
+    while (str[i]) {
+        lcd_dat(str[i]);
+        i++;
+    }
 }
 
 
 
 
- 
+

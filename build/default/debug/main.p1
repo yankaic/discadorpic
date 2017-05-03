@@ -1070,496 +1070,518 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 157: entrada = tc_letra(0);
 "157
 [e = _entrada ( _tc_letra (1 -> -> 0 `i `ui ]
-[; ;main.c: 158: if (entrada == '*' && cont > 0) {
+[; ;main.c: 158: if(entrada == '#' ){
 "158
-[e $ ! && == -> _entrada `ui -> 42 `ui > _cont -> 0 `i 87  ]
+[e $ ! == -> _entrada `ui -> 35 `ui 87  ]
 {
-[; ;main.c: 159: cont--;
+[; ;main.c: 159: break;
 "159
-[e -- _cont -> 1 `i ]
-[; ;main.c: 161: lcd_cmd(0xC0 + cont);
-"161
-[e ( _lcd_cmd (1 -> + -> 192 `i _cont `uc ]
-[; ;main.c: 162: continue;
-"162
-[e $U 84  ]
-"163
+[e $U 86  ]
+"160
 }
 [e :U 87 ]
-[; ;main.c: 163: }
-[; ;main.c: 164: nome[cont] = entrada;
+[; ;main.c: 160: }
+[; ;main.c: 161: if (entrada == '*' && cont > 0) {
+"161
+[e $ ! && == -> _entrada `ui -> 42 `ui > _cont -> 0 `i 88  ]
+{
+[; ;main.c: 162: cont--;
+"162
+[e -- _cont -> 1 `i ]
+[; ;main.c: 164: lcd_cmd(0xC0 + cont);
 "164
-[e = *U + &U _nome * -> -> _cont `ui `ux -> -> # *U &U _nome `ui `ux _entrada ]
-[; ;main.c: 165: cont++;
+[e ( _lcd_cmd (1 -> + -> 192 `i _cont `uc ]
+[; ;main.c: 165: continue;
 "165
-[e ++ _cont -> 1 `i ]
-[; ;main.c: 166: lcd_dat(entrada);
+[e $U 84  ]
 "166
-[e ( _lcd_dat (1 _entrada ]
+}
+[e :U 88 ]
+[; ;main.c: 166: }
+[; ;main.c: 167: nome[cont] = entrada;
 "167
+[e = *U + &U _nome * -> -> _cont `ui `ux -> -> # *U &U _nome `ui `ux _entrada ]
+[; ;main.c: 168: cont++;
+"168
+[e ++ _cont -> 1 `i ]
+[; ;main.c: 169: lcd_dat(entrada);
+"169
+[e ( _lcd_dat (1 _entrada ]
+"170
 }
 [e :U 84 ]
 "156
 [e $ && != -> _entrada `ui -> 35 `ui < _cont -> 9 `i 85  ]
 [e :U 86 ]
-[; ;main.c: 167: }
-[; ;main.c: 168: if (cont < 9) {
-"168
-[e $ ! < _cont -> 9 `i 88  ]
-{
-[; ;main.c: 169: for (; cont < 9; cont++) {
-"169
-{
-[e $ < _cont -> 9 `i 89  ]
-[e $U 90  ]
-[e :U 89 ]
-{
-[; ;main.c: 170: nome[cont] = '#';
-"170
-[e = *U + &U _nome * -> -> _cont `ui `ux -> -> # *U &U _nome `ui `ux -> -> 35 `ui `uc ]
+[; ;main.c: 170: }
+[; ;main.c: 171: if (cont < 9) {
 "171
-}
-"169
-[e ++ _cont -> 1 `i ]
-[e $ < _cont -> 9 `i 89  ]
+[e $ ! < _cont -> 9 `i 89  ]
+{
+[; ;main.c: 172: for (; cont < 9; cont++) {
+"172
+{
+[e $ < _cont -> 9 `i 90  ]
+[e $U 91  ]
 [e :U 90 ]
-"171
+{
+[; ;main.c: 173: nome[cont] = ' ';
+"173
+[e = *U + &U _nome * -> -> _cont `ui `ux -> -> # *U &U _nome `ui `ux -> -> 32 `ui `uc ]
+"174
 }
 "172
-}
-[e :U 88 ]
-[; ;main.c: 171: }
-[; ;main.c: 172: }
-[; ;main.c: 173: nome[9] = '\0';
-"173
-[e = *U + &U _nome * -> -> -> 9 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 0 `ui `uc ]
-[; ;main.c: 174: estado = 2;
+[e ++ _cont -> 1 `i ]
+[e $ < _cont -> 9 `i 90  ]
+[e :U 91 ]
 "174
-[e = _estado -> 2 `i ]
-[; ;main.c: 175: }
+}
 "175
+}
+[e :U 89 ]
+[; ;main.c: 174: }
+[; ;main.c: 175: }
+[; ;main.c: 176: nome[9] = '\0';
+"176
+[e = *U + &U _nome * -> -> -> 9 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 0 `ui `uc ]
+[; ;main.c: 177: estado = 2;
+"177
+[e = _estado -> 2 `i ]
+[; ;main.c: 178: }
+"178
 [e :UE 83 ]
 }
-"177
+"180
 [v _digitarNumero `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 177: void digitarNumero() {
+[; ;main.c: 180: void digitarNumero() {
 [e :U _digitarNumero ]
 [f ]
-[; ;main.c: 178: lcd_cmd(0x01);
-"178
-[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
-[; ;main.c: 179: lcd_cmd(0x80);
-"179
-[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
-[; ;main.c: 180: lcd_str("Digite Numero");
-"180
-[e ( _lcd_str (1 :s 5C ]
-[; ;main.c: 181: lcd_cmd(0xC0);
+[; ;main.c: 181: lcd_cmd(0x01);
 "181
-[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
-[; ;main.c: 182: lcd_str("#########");
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+[; ;main.c: 182: lcd_cmd(0x80);
 "182
-[e ( _lcd_str (1 :s 6C ]
-[; ;main.c: 183: lcd_cmd(0xC0);
+[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
+[; ;main.c: 183: lcd_str("Digite Numero");
 "183
-[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
-[; ;main.c: 184: entrada = ' ';
+[e ( _lcd_str (1 :s 5C ]
+[; ;main.c: 184: lcd_cmd(0xC0);
 "184
-[e = _entrada -> -> 32 `ui `uc ]
+[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
+[; ;main.c: 185: lcd_str("#########");
+"185
+[e ( _lcd_str (1 :s 6C ]
+[; ;main.c: 186: lcd_cmd(0xC0);
 "186
-[v _cont `i ~T0 @X0 1 a ]
-[; ;main.c: 186: int cont = 0;
-[e = _cont -> 0 `i ]
-[; ;main.c: 187: while (entrada != '#' && cont < 9) {
+[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
+[; ;main.c: 187: entrada = ' ';
 "187
-[e $U 93  ]
-[e :U 94 ]
-{
-[; ;main.c: 188: entrada = tc_tecla(0);
-"188
-[e = _entrada ( _tc_tecla (1 -> -> 0 `i `ui ]
-[; ;main.c: 189: if (entrada == '*' && cont > 0) {
+[e = _entrada -> -> 32 `ui `uc ]
 "189
-[e $ ! && == -> _entrada `ui -> 42 `ui > _cont -> 0 `i 96  ]
-{
-[; ;main.c: 190: cont--;
+[v _cont `i ~T0 @X0 1 a ]
+[; ;main.c: 189: int cont = 0;
+[e = _cont -> 0 `i ]
+[; ;main.c: 190: while (entrada != '#' && cont < 9) {
 "190
-[e -- _cont -> 1 `i ]
-[; ;main.c: 191: lcd_cmd(0xC0 + cont);
+[e $U 94  ]
+[e :U 95 ]
+{
+[; ;main.c: 191: if(entrada == '#' ){
 "191
-[e ( _lcd_cmd (1 -> + -> 192 `i _cont `uc ]
-[; ;main.c: 192: continue;
+[e $ ! == -> _entrada `ui -> 35 `ui 97  ]
+{
+[; ;main.c: 192: break;
 "192
-[e $U 93  ]
+[e $U 96  ]
 "193
 }
-[e :U 96 ]
-[; ;main.c: 193: }
-[; ;main.c: 194: numero[cont] = entrada;
-"194
-[e = *U + &U _numero * -> -> _cont `ui `ux -> -> # *U &U _numero `ui `ux _entrada ]
-[; ;main.c: 195: cont++;
-"195
-[e ++ _cont -> 1 `i ]
-[; ;main.c: 196: lcd_dat(entrada);
-"196
-[e ( _lcd_dat (1 _entrada ]
-"197
-}
-[e :U 93 ]
-"187
-[e $ && != -> _entrada `ui -> 35 `ui < _cont -> 9 `i 94  ]
-[e :U 95 ]
-[; ;main.c: 197: }
-[; ;main.c: 198: if (cont < 9) {
-"198
-[e $ ! < _cont -> 9 `i 97  ]
-{
-[; ;main.c: 199: for (; cont < 9; cont++) {
-"199
-{
-[e $ < _cont -> 9 `i 98  ]
-[e $U 99  ]
-[e :U 98 ]
-{
-[; ;main.c: 200: numero[cont] = '#';
-"200
-[e = *U + &U _numero * -> -> _cont `ui `ux -> -> # *U &U _numero `ui `ux -> -> 35 `ui `uc ]
-"201
-}
-"199
-[e ++ _cont -> 1 `i ]
-[e $ < _cont -> 9 `i 98  ]
-[e :U 99 ]
-"201
-}
-"202
-}
 [e :U 97 ]
-[; ;main.c: 201: }
-[; ;main.c: 202: }
-[; ;main.c: 203: numero[9] = '\0';
-"203
-[e = *U + &U _numero * -> -> -> 9 `i `ui `ux -> -> # *U &U _numero `ui `ux -> -> 0 `ui `uc ]
-[; ;main.c: 204: if (modo) {
-"204
-[e $ ! _modo 101  ]
+[; ;main.c: 193: }
+[; ;main.c: 194: entrada = tc_tecla(0);
+"194
+[e = _entrada ( _tc_tecla (1 -> -> 0 `i `ui ]
+[; ;main.c: 195: if (entrada == '*' && cont > 0) {
+"195
+[e $ ! && == -> _entrada `ui -> 42 `ui > _cont -> 0 `i 98  ]
 {
-[; ;main.c: 205: estado = 4;
-"205
-[e = _estado -> 4 `i ]
-"206
+[; ;main.c: 196: cont--;
+"196
+[e -- _cont -> 1 `i ]
+[; ;main.c: 197: lcd_cmd(0xC0 + cont);
+"197
+[e ( _lcd_cmd (1 -> + -> 192 `i _cont `uc ]
+[; ;main.c: 198: continue;
+"198
+[e $U 94  ]
+"199
 }
-[; ;main.c: 206: } else {
-[e $U 102  ]
-[e :U 101 ]
+[e :U 98 ]
+[; ;main.c: 199: }
+[; ;main.c: 200: numero[cont] = entrada;
+"200
+[e = *U + &U _numero * -> -> _cont `ui `ux -> -> # *U &U _numero `ui `ux _entrada ]
+[; ;main.c: 201: cont++;
+"201
+[e ++ _cont -> 1 `i ]
+[; ;main.c: 202: lcd_dat(entrada);
+"202
+[e ( _lcd_dat (1 _entrada ]
+"203
+}
+[e :U 94 ]
+"190
+[e $ && != -> _entrada `ui -> 35 `ui < _cont -> 9 `i 95  ]
+[e :U 96 ]
+[; ;main.c: 203: }
+[; ;main.c: 204: if (cont < 9) {
+"204
+[e $ ! < _cont -> 9 `i 99  ]
 {
-[; ;main.c: 207: estado = 7;
+[; ;main.c: 205: for (; cont < 9; cont++) {
+"205
+{
+[e $ < _cont -> 9 `i 100  ]
+[e $U 101  ]
+[e :U 100 ]
+{
+[; ;main.c: 206: numero[cont] = '#';
+"206
+[e = *U + &U _numero * -> -> _cont `ui `ux -> -> # *U &U _numero `ui `ux -> -> 35 `ui `uc ]
 "207
-[e = _estado -> 7 `i ]
+}
+"205
+[e ++ _cont -> 1 `i ]
+[e $ < _cont -> 9 `i 100  ]
+[e :U 101 ]
+"207
+}
 "208
 }
-[e :U 102 ]
+[e :U 99 ]
+[; ;main.c: 207: }
 [; ;main.c: 208: }
-[; ;main.c: 209: }
+[; ;main.c: 209: numero[9] = '\0';
 "209
-[e :UE 92 ]
-}
+[e = *U + &U _numero * -> -> -> 9 `i `ui `ux -> -> # *U &U _numero `ui `ux -> -> 0 `ui `uc ]
+[; ;main.c: 210: if (modo) {
+"210
+[e $ ! _modo 103  ]
+{
+[; ;main.c: 211: estado = 4;
 "211
+[e = _estado -> 4 `i ]
+"212
+}
+[; ;main.c: 212: } else {
+[e $U 104  ]
+[e :U 103 ]
+{
+[; ;main.c: 213: estado = 7;
+"213
+[e = _estado -> 7 `i ]
+"214
+}
+[e :U 104 ]
+[; ;main.c: 214: }
+[; ;main.c: 215: }
+"215
+[e :UE 93 ]
+}
+"217
 [v _buscar `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 211: void buscar() {
+[; ;main.c: 217: void buscar() {
 [e :U _buscar ]
 [f ]
-"212
+"218
 [v _end `uc ~T0 @X0 1 a ]
-[; ;main.c: 212: unsigned char end = 0x1;
+[; ;main.c: 218: unsigned char end = 0x1;
 [e = _end -> -> 1 `i `uc ]
-"213
+"219
 [v F646 `b ~T0 @X0 1 s achou ]
 [i F646
 -> 0 `i
 ]
-[; ;main.c: 213: static bit achou = 0b0;
-[; ;main.c: 214: while (end < endereco) {
-"214
-[e $U 104  ]
-[e :U 105 ]
-{
-[; ;main.c: 215: achou = 0b1;
-"215
-[e = F646 -> -> 1 `i `b ]
-[; ;main.c: 216: for (int i = 0; i < 9 && numero[i] != '\0'; i++) {
-"216
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $U 110  ]
+[; ;main.c: 219: static bit achou = 0b0;
+[; ;main.c: 220: while (end < endereco) {
+"220
+[e $U 106  ]
 [e :U 107 ]
 {
-"217
-[v _num `i ~T0 @X0 1 a ]
-[; ;main.c: 217: int num = eeprom_read(end + i);
-[e = _num -> ( _eeprom_read (1 -> + -> _end `i _i `uc `i ]
-[; ;main.c: 218: if (num != numero[i]) {
-"218
-[e $ ! != _num -> *U + &U _numero * -> -> _i `ui `ux -> -> # *U &U _numero `ui `ux `i 111  ]
-{
-[; ;main.c: 219: achou = 0b0;
-"219
-[e = F646 -> -> 0 `i `b ]
-[; ;main.c: 220: break;
-"220
-[e $U 108  ]
+[; ;main.c: 221: achou = 0b1;
 "221
-}
-[e :U 111 ]
+[e = F646 -> -> 1 `i `b ]
+[; ;main.c: 222: for (int i = 0; i < 9 && numero[i] != '\0'; i++) {
 "222
-}
-"216
-[e ++ _i -> 1 `i ]
-[e :U 110 ]
-[e $ && < _i -> 9 `i != -> *U + &U _numero * -> -> _i `ui `ux -> -> # *U &U _numero `ui `ux `ui -> 0 `ui 107  ]
-[e :U 108 ]
-"222
-}
-[; ;main.c: 221: }
-[; ;main.c: 222: }
-[; ;main.c: 223: end += 9;
-"223
-[e =+ _end -> -> 9 `i `uc ]
-[; ;main.c: 224: if (achou) {
-"224
-[e $ ! F646 112  ]
-{
-[; ;main.c: 225: for (int i = 0; i < 10; i++) {
-"225
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 10 `i 113  ]
-[e $U 114  ]
-[e :U 113 ]
+[e $U 112  ]
+[e :U 109 ]
 {
-[; ;main.c: 226: nome[i] = eeprom_read(end);
-"226
-[e = *U + &U _nome * -> -> _i `ui `ux -> -> # *U &U _nome `ui `ux ( _eeprom_read (1 _end ]
-[; ;main.c: 227: end++;
-"227
-[e ++ _end -> -> 1 `i `uc ]
-"228
-}
+"223
+[v _num `i ~T0 @X0 1 a ]
+[; ;main.c: 223: int num = eeprom_read(end + i);
+[e = _num -> ( _eeprom_read (1 -> + -> _end `i _i `uc `i ]
+[; ;main.c: 224: if (num != numero[i]) {
+"224
+[e $ ! != _num -> *U + &U _numero * -> -> _i `ui `ux -> -> # *U &U _numero `ui `ux `i 113  ]
+{
+[; ;main.c: 225: achou = 0b0;
 "225
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 10 `i 113  ]
-[e :U 114 ]
+[e = F646 -> -> 0 `i `b ]
+[; ;main.c: 226: break;
+"226
+[e $U 110  ]
+"227
+}
+[e :U 113 ]
 "228
 }
-[; ;main.c: 228: }
-[; ;main.c: 229: nome[9] = '\0';
-"229
-[e = *U + &U _nome * -> -> -> 9 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 0 `ui `uc ]
-[; ;main.c: 230: break;
-"230
-[e $U 106  ]
-"231
-}
-[; ;main.c: 231: } else end += 10;
-[e $U 116  ]
+"222
+[e ++ _i -> 1 `i ]
 [e :U 112 ]
+[e $ && < _i -> 9 `i != -> *U + &U _numero * -> -> _i `ui `ux -> -> # *U &U _numero `ui `ux `ui -> 0 `ui 109  ]
+[e :U 110 ]
+"228
+}
+[; ;main.c: 227: }
+[; ;main.c: 228: }
+[; ;main.c: 229: end += 10;
+"229
 [e =+ _end -> -> 10 `i `uc ]
-[e :U 116 ]
-"232
-}
-[e :U 104 ]
-"214
-[e $ < -> _end `i -> _endereco `i 105  ]
-[e :U 106 ]
-[; ;main.c: 232: }
-[; ;main.c: 233: if (!achou) {
-"233
-[e $ ! ! F646 117  ]
+[; ;main.c: 230: if (achou) {
+"230
+[e $ ! F646 114  ]
 {
-[; ;main.c: 234: nome[0] = 'u';
+[; ;main.c: 231: for (int i = 0; i < 9; i++) {
+"231
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 9 `i 115  ]
+[e $U 116  ]
+[e :U 115 ]
+{
+[; ;main.c: 232: nome[i] = eeprom_read(end);
+"232
+[e = *U + &U _nome * -> -> _i `ui `ux -> -> # *U &U _nome `ui `ux ( _eeprom_read (1 _end ]
+[; ;main.c: 233: end++;
+"233
+[e ++ _end -> -> 1 `i `uc ]
 "234
-[e = *U + &U _nome * -> -> -> 0 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 117 `ui `uc ]
-[; ;main.c: 235: nome[1] = 'n';
+}
+"231
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 9 `i 115  ]
+[e :U 116 ]
+"234
+}
+[; ;main.c: 234: }
+[; ;main.c: 235: nome[9] = '\0';
 "235
-[e = *U + &U _nome * -> -> -> 1 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 110 `ui `uc ]
-[; ;main.c: 236: nome[2] = 'k';
+[e = *U + &U _nome * -> -> -> 9 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 0 `ui `uc ]
+[; ;main.c: 236: break;
 "236
-[e = *U + &U _nome * -> -> -> 2 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 107 `ui `uc ]
-[; ;main.c: 237: nome[3] = 'n';
+[e $U 108  ]
 "237
-[e = *U + &U _nome * -> -> -> 3 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 110 `ui `uc ]
-[; ;main.c: 238: nome[4] = 'o';
+}
+[; ;main.c: 237: } else end += 10;
+[e $U 118  ]
+[e :U 114 ]
+[e =+ _end -> -> 10 `i `uc ]
+[e :U 118 ]
 "238
-[e = *U + &U _nome * -> -> -> 4 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 111 `ui `uc ]
-[; ;main.c: 239: nome[5] = 'w';
+}
+[e :U 106 ]
+"220
+[e $ < -> _end `i -> _endereco `i 107  ]
+[e :U 108 ]
+[; ;main.c: 238: }
+[; ;main.c: 239: if (!achou) {
 "239
-[e = *U + &U _nome * -> -> -> 5 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 119 `ui `uc ]
-[; ;main.c: 240: nome[6] = 'n';
+[e $ ! ! F646 119  ]
+{
+[; ;main.c: 240: nome[0] = 'u';
 "240
-[e = *U + &U _nome * -> -> -> 6 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 110 `ui `uc ]
-[; ;main.c: 241: nome[7] = '\0';
+[e = *U + &U _nome * -> -> -> 0 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 117 `ui `uc ]
+[; ;main.c: 241: nome[1] = 'n';
 "241
-[e = *U + &U _nome * -> -> -> 7 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 0 `ui `uc ]
+[e = *U + &U _nome * -> -> -> 1 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 110 `ui `uc ]
+[; ;main.c: 242: nome[2] = 'k';
+"242
+[e = *U + &U _nome * -> -> -> 2 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 107 `ui `uc ]
+[; ;main.c: 243: nome[3] = 'n';
 "243
-}
-[e :U 117 ]
-[; ;main.c: 243: }
-[; ;main.c: 244: estado = 5;
+[e = *U + &U _nome * -> -> -> 3 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 110 `ui `uc ]
+[; ;main.c: 244: nome[4] = 'o';
 "244
-[e = _estado -> 5 `i ]
-[; ;main.c: 245: }
+[e = *U + &U _nome * -> -> -> 4 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 111 `ui `uc ]
+[; ;main.c: 245: nome[5] = 'w';
 "245
-[e :UE 103 ]
-}
+[e = *U + &U _nome * -> -> -> 5 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 119 `ui `uc ]
+[; ;main.c: 246: nome[6] = 'n';
+"246
+[e = *U + &U _nome * -> -> -> 6 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 110 `ui `uc ]
+[; ;main.c: 247: nome[7] = '\0';
 "247
+[e = *U + &U _nome * -> -> -> 7 `i `ui `ux -> -> # *U &U _nome `ui `ux -> -> 0 `ui `uc ]
+"249
+}
+[e :U 119 ]
+[; ;main.c: 249: }
+[; ;main.c: 250: estado = 5;
+"250
+[e = _estado -> 5 `i ]
+[; ;main.c: 251: }
+"251
+[e :UE 105 ]
+}
+"253
 [v _armazenar `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 247: void armazenar() {
+[; ;main.c: 253: void armazenar() {
 [e :U _armazenar ]
 [f ]
-[; ;main.c: 248: lcd_cmd(0x01);
-"248
-[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
-[; ;main.c: 249: lcd_cmd(0x80);
-"249
-[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
-[; ;main.c: 250: lcd_str("Armazenando...");
-"250
-[e ( _lcd_str (1 :s 7C ]
-[; ;main.c: 252: for (int i = 0; i < 9; i++) {
-"252
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 9 `i 119  ]
-[e $U 120  ]
-[e :U 119 ]
-{
-[; ;main.c: 253: eeprom_write(endereco, numero[i]);
-"253
-[e ( _eeprom_write (2 , _endereco *U + &U _numero * -> -> _i `ui `ux -> -> # *U &U _numero `ui `ux ]
-[; ;main.c: 254: endereco++;
+[; ;main.c: 254: lcd_cmd(0x01);
 "254
-[e ++ _endereco -> -> 1 `i `uc ]
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+[; ;main.c: 255: lcd_cmd(0x80);
 "255
-}
-"252
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 9 `i 119  ]
-[e :U 120 ]
-"255
-}
-[; ;main.c: 255: }
-[; ;main.c: 256: for (int i = 0; i < 9; i++) {
+[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
+[; ;main.c: 256: lcd_str("Armazenando...");
 "256
+[e ( _lcd_str (1 :s 7C ]
+[; ;main.c: 258: for (int i = 0; i < 10; i++) {
+"258
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 9 `i 122  ]
-[e $U 123  ]
-[e :U 122 ]
+[e $ < _i -> 10 `i 121  ]
+[e $U 122  ]
+[e :U 121 ]
 {
-[; ;main.c: 257: eeprom_write(endereco, nome[i]);
-"257
-[e ( _eeprom_write (2 , _endereco *U + &U _nome * -> -> _i `ui `ux -> -> # *U &U _nome `ui `ux ]
-[; ;main.c: 258: endereco++;
-"258
-[e ++ _endereco -> -> 1 `i `uc ]
+[; ;main.c: 259: eeprom_write(endereco, numero[i]);
 "259
-}
-"256
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 9 `i 122  ]
-[e :U 123 ]
-"259
-}
-[; ;main.c: 259: }
-[; ;main.c: 260: eeprom_write(0x0, endereco);
+[e ( _eeprom_write (2 , _endereco *U + &U _numero * -> -> _i `ui `ux -> -> # *U &U _numero `ui `ux ]
+[; ;main.c: 260: endereco++;
 "260
-[e ( _eeprom_write (2 , -> -> 0 `i `uc _endereco ]
-[; ;main.c: 263: lcd_cmd(0x01);
-"263
-[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
-[; ;main.c: 264: lcd_cmd(0x80);
-"264
-[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
-[; ;main.c: 265: lcd_str("Salvo!");
-"265
-[e ( _lcd_str (1 :s 8C ]
-[; ;main.c: 266: tc_tecla(200);
-"266
-[e ( _tc_tecla (1 -> -> 200 `i `ui ]
-[; ;main.c: 267: estado = 0;
-"267
-[e = _estado -> 0 `i ]
-[; ;main.c: 268: }
-"268
-[e :UE 118 ]
+[e ++ _endereco -> -> 1 `i `uc ]
+"261
 }
+"258
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 10 `i 121  ]
+[e :U 122 ]
+"261
+}
+[; ;main.c: 261: }
+[; ;main.c: 262: for (int i = 0; i < 10; i++) {
+"262
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 10 `i 124  ]
+[e $U 125  ]
+[e :U 124 ]
+{
+[; ;main.c: 263: eeprom_write(endereco, nome[i]);
+"263
+[e ( _eeprom_write (2 , _endereco *U + &U _nome * -> -> _i `ui `ux -> -> # *U &U _nome `ui `ux ]
+[; ;main.c: 264: endereco++;
+"264
+[e ++ _endereco -> -> 1 `i `uc ]
+"265
+}
+"262
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 10 `i 124  ]
+[e :U 125 ]
+"265
+}
+[; ;main.c: 265: }
+[; ;main.c: 266: eeprom_write(0x0, endereco);
+"266
+[e ( _eeprom_write (2 , -> -> 0 `i `uc _endereco ]
+[; ;main.c: 269: lcd_cmd(0x01);
+"269
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+[; ;main.c: 270: lcd_cmd(0x80);
 "270
+[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
+[; ;main.c: 271: lcd_str("Salvo!");
+"271
+[e ( _lcd_str (1 :s 8C ]
+[; ;main.c: 272: tc_tecla(200);
+"272
+[e ( _tc_tecla (1 -> -> 200 `i `ui ]
+[; ;main.c: 273: estado = 0;
+"273
+[e = _estado -> 0 `i ]
+[; ;main.c: 274: }
+"274
+[e :UE 120 ]
+}
+"276
 [v _chamar `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 270: void chamar() {
+[; ;main.c: 276: void chamar() {
 [e :U _chamar ]
 [f ]
-[; ;main.c: 271: lcd_cmd(0x01);
-"271
-[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
-[; ;main.c: 272: lcd_cmd(0x80);
-"272
-[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
-[; ;main.c: 273: lcd_str("Chamando...");
-"273
-[e ( _lcd_str (1 :s 9C ]
-[; ;main.c: 274: lcd_cmd(0xC0);
-"274
-[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
-[; ;main.c: 275: lcd_str(nome);
-"275
-[e ( _lcd_str (1 -> &U _nome `*Cuc ]
-[; ;main.c: 277: while (tc_tecla(0) != '#');
+[; ;main.c: 277: lcd_cmd(0x01);
 "277
-[e $U 126  ]
-[e :U 127 ]
-[e :U 126 ]
-[e $ != -> ( _tc_tecla (1 -> -> 0 `i `ui `ui -> 35 `ui 127  ]
-[e :U 128 ]
-[; ;main.c: 279: estado = 6;
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+[; ;main.c: 278: lcd_cmd(0x80);
+"278
+[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
+[; ;main.c: 279: lcd_str("Chamando...");
 "279
-[e = _estado -> 6 `i ]
-[; ;main.c: 280: }
+[e ( _lcd_str (1 :s 9C ]
+[; ;main.c: 280: lcd_cmd(0xC0);
 "280
-[e :UE 125 ]
+[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
+[; ;main.c: 281: lcd_str(nome);
+"281
+[e ( _lcd_str (1 -> &U _nome `*Cuc ]
+[; ;main.c: 283: while (tc_tecla(0) != '#');
+"283
+[e $U 128  ]
+[e :U 129 ]
+[e :U 128 ]
+[e $ != -> ( _tc_tecla (1 -> -> 0 `i `ui `ui -> 35 `ui 129  ]
+[e :U 130 ]
+[; ;main.c: 285: estado = 6;
+"285
+[e = _estado -> 6 `i ]
+[; ;main.c: 286: }
+"286
+[e :UE 127 ]
 }
-"282
+"288
 [v _desligar `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 282: void desligar() {
+[; ;main.c: 288: void desligar() {
 [e :U _desligar ]
 [f ]
-[; ;main.c: 283: lcd_cmd(0x01);
-"283
-[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
-[; ;main.c: 284: lcd_cmd(0x80);
-"284
-[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
-[; ;main.c: 285: lcd_str("Desligando...");
-"285
-[e ( _lcd_str (1 :s 10C ]
-[; ;main.c: 287: _delay((unsigned long)((1000)*(4000000/4000.0)));
-"287
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main.c: 288: estado = 0;
-"288
-[e = _estado -> 0 `i ]
-[; ;main.c: 289: }
+[; ;main.c: 289: lcd_cmd(0x01);
 "289
-[e :UE 129 ]
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+[; ;main.c: 290: lcd_cmd(0x80);
+"290
+[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
+[; ;main.c: 291: lcd_str("Desligando...");
+"291
+[e ( _lcd_str (1 :s 10C ]
+[; ;main.c: 293: _delay((unsigned long)((1000)*(4000000/4000.0)));
+"293
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main.c: 294: estado = 0;
+"294
+[e = _estado -> 0 `i ]
+[; ;main.c: 295: }
+"295
+[e :UE 131 ]
 }
 [a 2C 65 100 105 99 105 111 110 97 114 0 ]
 [a 1C 68 105 115 99 97 114 0 ]

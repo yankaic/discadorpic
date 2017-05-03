@@ -991,6 +991,9 @@ entrada = ' ';
 int cont = 0;
 while (entrada != '#' && cont < 9) {
 entrada = tc_letra(0);
+if(entrada == '#' ){
+break;
+}
 if (entrada == '*' && cont > 0) {
 cont--;
 
@@ -1003,7 +1006,7 @@ lcd_dat(entrada);
 }
 if (cont < 9) {
 for (; cont < 9; cont++) {
-nome[cont] = '#';
+nome[cont] = ' ';
 }
 }
 nome[9] = '\0';
@@ -1021,6 +1024,9 @@ entrada = ' ';
 
 int cont = 0;
 while (entrada != '#' && cont < 9) {
+if(entrada == '#' ){
+break;
+}
 entrada = tc_tecla(0);
 if (entrada == '*' && cont > 0) {
 cont--;
@@ -1056,9 +1062,9 @@ achou = 0b0;
 break;
 }
 }
-end += 9;
+end += 10;
 if (achou) {
-for (int i = 0; i < 10; i++) {
+for (int i = 0; i < 9; i++) {
 nome[i] = eeprom_read(end);
 end++;
 }
@@ -1085,11 +1091,11 @@ lcd_cmd(0x01);
 lcd_cmd(0x80);
 lcd_str("Armazenando...");
 
-for (int i = 0; i < 9; i++) {
+for (int i = 0; i < 10; i++) {
 eeprom_write(endereco, numero[i]);
 endereco++;
 }
-for (int i = 0; i < 9; i++) {
+for (int i = 0; i < 10; i++) {
 eeprom_write(endereco, nome[i]);
 endereco++;
 }

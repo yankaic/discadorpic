@@ -68,18 +68,18 @@ unsigned char tc_letra(unsigned int timeout) {
         case '5':
         case '6':
         case '8':
-            for (int i = 1; i < 3; i++){
+            for (int i = 1; i < 3; i++) {
                 num2 = tc_tecla(200);
-                if(num == num2){
+                if (num == num2) {
                     cont++;
                 } else break;
             }
             break;
         case '7':
         case '9':
-            for (int i = 1; i < 4; i++){
+            for (int i = 1; i < 4; i++) {
                 num2 = tc_tecla(200);
-                if(num == num2){
+                if (num == num2) {
                     cont++;
                 } else break;
             }

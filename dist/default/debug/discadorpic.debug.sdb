@@ -45,15 +45,15 @@
 [v _desativaModo desativaModo `(v  1 e 1 0 ]
 "146
 [v _digitarNome digitarNome `(v  1 e 1 0 ]
-"177
+"180
 [v _digitarNumero digitarNumero `(v  1 e 1 0 ]
-"211
+"217
 [v _buscar buscar `(v  1 e 1 0 ]
-"247
+"253
 [v _armazenar armazenar `(v  1 e 1 0 ]
-"270
+"276
 [v _chamar chamar `(v  1 e 1 0 ]
-"282
+"288
 [v _desligar desligar `(v  1 e 1 0 ]
 "7 D:\carlo\Documents\MPLABXProjects\discadorpic\teclado.c
 [v _tc_tecla tc_tecla `(uc  1 e 1 0 ]
@@ -135,19 +135,19 @@
 {
 "144
 } 0
-"177
+"180
 [v _digitarNumero digitarNumero `(v  1 e 1 0 ]
 {
-"186
+"189
 [v digitarNumero@cont cont `i  1 a 2 13 ]
-"209
+"215
 } 0
 "146
 [v _digitarNome digitarNome `(v  1 e 1 0 ]
 {
 "155
 [v digitarNome@cont cont `i  1 a 2 25 ]
-"175
+"178
 } 0
 "55 D:\carlo\Documents\MPLABXProjects\discadorpic\teclado.c
 [v _tc_letra tc_letra `(uc  1 e 1 0 ]
@@ -168,30 +168,30 @@
 [v tc_letra@timeout timeout `ui  1 p 2 12 ]
 "130
 } 0
-"282 D:\carlo\Documents\MPLABXProjects\discadorpic\main.c
+"288 D:\carlo\Documents\MPLABXProjects\discadorpic\main.c
 [v _desligar desligar `(v  1 e 1 0 ]
 {
-"289
+"295
 } 0
-"270
+"276
 [v _chamar chamar `(v  1 e 1 0 ]
 {
-"280
+"286
 } 0
-"211
+"217
 [v _buscar buscar `(v  1 e 1 0 ]
 {
-"225
+"231
 [v buscar@i_147 i `i  1 a 2 2 ]
-"217
+"223
 [v buscar@num num `i  1 a 2 0 ]
-"216
+"222
 [v buscar@i i `i  1 a 2 5 ]
-"212
+"218
 [v buscar@end end `uc  1 a 1 4 ]
-"213
+"219
 [v buscar@achou achou `b  1 s 0 achou ]
-"245
+"251
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\pic\eeread.c
 [v _eeprom_read eeprom_read `(uc  1 e 1 0 ]
@@ -202,14 +202,14 @@
 [v eeprom_read@addr addr `uc  1 a 1 5 ]
 "12
 } 0
-"247 D:\carlo\Documents\MPLABXProjects\discadorpic\main.c
+"253 D:\carlo\Documents\MPLABXProjects\discadorpic\main.c
 [v _armazenar armazenar `(v  1 e 1 0 ]
 {
-"256
+"262
 [v armazenar@i_151 i `i  1 a 2 15 ]
-"252
+"258
 [v armazenar@i i `i  1 a 2 13 ]
-"268
+"274
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\pic\eewrite.c
 [v _eeprom_write eeprom_write `(v  1 e 1 0 ]

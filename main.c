@@ -155,6 +155,9 @@ void digitarNome() {
     int cont = 0;
     while (entrada != '#' && cont < 9) {
         entrada = tc_letra(0);
+        if(entrada == '#' ){
+            break;
+        }
         if (entrada == '*' && cont > 0) {
             cont--;
 
@@ -185,6 +188,9 @@ void digitarNumero() {
 
     int cont = 0;
     while (entrada != '#' && cont < 9) {
+        if(entrada == '#' ){
+            break;
+        }
         entrada = tc_tecla(0);
         if (entrada == '*' && cont > 0) {
             cont--;
@@ -197,7 +203,7 @@ void digitarNumero() {
     }
     if (cont < 9) {
         for (; cont < 9; cont++) {
-            numero[cont] = ' ';
+            numero[cont] = '#';
         }
     }
     numero[9] = '\0';
@@ -220,12 +226,13 @@ void buscar() {
                 break;
             }
         }
-        end += 9;
+        end += 10;
         if (achou) {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 9; i++) {
                 nome[i] = eeprom_read(end);
                 end++;
             }
+            nome[9] = '\0';
             break;
         } else end += 10;
     }
