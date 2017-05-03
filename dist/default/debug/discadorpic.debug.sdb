@@ -1,0 +1,320 @@
+[p LITE_MODE AUTOSTATIC PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F628A ]
+[d frameptr 6 ]
+"26 D:\carlo\Documents\MPLABXProjects\discadorpic\atraso.c
+[v _atraso_ms atraso_ms `(v  1 e 1 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\pic\eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\pic\eeread.c
+[v _eeprom_read eeprom_read `(uc  1 e 1 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\pic\eewrite.c
+[v _eeprom_write eeprom_write `(v  1 e 1 0 ]
+"30 D:\carlo\Documents\MPLABXProjects\discadorpic\lcd.c
+[v _lcd_wr lcd_wr `(v  1 e 1 0 ]
+"44
+[v _lcd_cmd lcd_cmd `(v  1 e 1 0 ]
+"55
+[v _lcd_dat lcd_dat `(v  1 e 1 0 ]
+"66
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+"85
+[v _lcd_str lcd_str `(v  1 e 1 0 ]
+"39 D:\carlo\Documents\MPLABXProjects\discadorpic\main.c
+[v _main main `(i  1 e 2 0 ]
+"63
+[v _interrupcao interrupcao `II(v  1 e 1 0 ]
+"67
+[v _maquina maquina `(v  1 e 1 0 ]
+"99
+[v _discar discar `(v  1 e 1 0 ]
+"119
+[v _adicionar adicionar `(v  1 e 1 0 ]
+"138
+[v _ativaModo ativaModo `(v  1 e 1 0 ]
+"142
+[v _desativaModo desativaModo `(v  1 e 1 0 ]
+"146
+[v _digitarNome digitarNome `(v  1 e 1 0 ]
+"177
+[v _digitarNumero digitarNumero `(v  1 e 1 0 ]
+"211
+[v _buscar buscar `(v  1 e 1 0 ]
+"247
+[v _armazenar armazenar `(v  1 e 1 0 ]
+"270
+[v _chamar chamar `(v  1 e 1 0 ]
+"282
+[v _desligar desligar `(v  1 e 1 0 ]
+"7 D:\carlo\Documents\MPLABXProjects\discadorpic\teclado.c
+[v _tc_tecla tc_tecla `(uc  1 e 1 0 ]
+"55
+[v _tc_letra tc_letra `(uc  1 e 1 0 ]
+"158 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic16f628a.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+"219
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"741
+[v _CMCON CMCON `VEuc  1 e 1 @31 ]
+"879
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"940
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1173
+[v _EEDATA EEDATA `VEuc  1 e 1 @154 ]
+"1179
+[v _EEADR EEADR `VEuc  1 e 1 @155 ]
+"1185
+[v _EECON1 EECON1 `VEuc  1 e 1 @156 ]
+"1222
+[v _EECON2 EECON2 `VEuc  1 e 1 @157 ]
+"1312
+[v _CARRY CARRY `VEb  1 e 0 @24 ]
+"1354
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"1378
+[v _RA0 RA0 `VEb  1 e 0 @40 ]
+"1400
+[v _RB3 RB3 `VEb  1 e 0 @51 ]
+"1402
+[v _RB4 RB4 `VEb  1 e 0 @52 ]
+"1404
+[v _RB5 RB5 `VEb  1 e 0 @53 ]
+"1406
+[v _RB6 RB6 `VEb  1 e 0 @54 ]
+"1408
+[v _RB7 RB7 `VEb  1 e 0 @55 ]
+"1418
+[v _RD RD `VEb  1 e 0 @1248 ]
+"1536
+[v _WR WR `VEb  1 e 0 @1249 ]
+"1538
+[v _WREN WREN `VEb  1 e 0 @1250 ]
+"11 D:\carlo\Documents\MPLABXProjects\discadorpic\common.h
+[v _entrada entrada `uc  1 e 1 0 ]
+"12
+[v _numero numero `[10]uc  1 e 10 0 ]
+"13
+[v _nome nome `[10]uc  1 e 10 0 ]
+"16
+[v _estado estado `i  1 e 2 0 ]
+"35 D:\carlo\Documents\MPLABXProjects\discadorpic\main.c
+[v _modo modo `b  1 e 0 0 ]
+"36
+[v _endereco endereco `uc  1 e 1 0 ]
+"5 D:\carlo\Documents\MPLABXProjects\discadorpic\teclado.c
+[v _linha linha `DCC[4]uc  1 e 4 0 ]
+"39 D:\carlo\Documents\MPLABXProjects\discadorpic\main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"51
+[v main@val val `uc  1 a 1 29 ]
+"61
+} 0
+"67
+[v _maquina maquina `(v  1 e 1 0 ]
+{
+"97
+} 0
+"99
+[v _discar discar `(v  1 e 1 0 ]
+{
+"117
+} 0
+"142
+[v _desativaModo desativaModo `(v  1 e 1 0 ]
+{
+"144
+} 0
+"177
+[v _digitarNumero digitarNumero `(v  1 e 1 0 ]
+{
+"186
+[v digitarNumero@cont cont `i  1 a 2 13 ]
+"209
+} 0
+"146
+[v _digitarNome digitarNome `(v  1 e 1 0 ]
+{
+"155
+[v digitarNome@cont cont `i  1 a 2 25 ]
+"175
+} 0
+"55 D:\carlo\Documents\MPLABXProjects\discadorpic\teclado.c
+[v _tc_letra tc_letra `(uc  1 e 1 0 ]
+{
+"80
+[v tc_letra@i_200 i `i  1 a 2 17 ]
+"71
+[v tc_letra@i i `i  1 a 2 15 ]
+"59
+[v tc_letra@cont cont `i  1 a 2 22 ]
+"56
+[v tc_letra@num num `uc  1 a 1 21 ]
+"58
+[v tc_letra@ret ret `uc  1 a 1 20 ]
+"57
+[v tc_letra@num2 num2 `uc  1 a 1 19 ]
+"55
+[v tc_letra@timeout timeout `ui  1 p 2 12 ]
+"130
+} 0
+"282 D:\carlo\Documents\MPLABXProjects\discadorpic\main.c
+[v _desligar desligar `(v  1 e 1 0 ]
+{
+"289
+} 0
+"270
+[v _chamar chamar `(v  1 e 1 0 ]
+{
+"280
+} 0
+"211
+[v _buscar buscar `(v  1 e 1 0 ]
+{
+"225
+[v buscar@i_147 i `i  1 a 2 2 ]
+"217
+[v buscar@num num `i  1 a 2 0 ]
+"216
+[v buscar@i i `i  1 a 2 5 ]
+"212
+[v buscar@end end `uc  1 a 1 4 ]
+"213
+[v buscar@achou achou `b  1 s 0 achou ]
+"245
+} 0
+"6 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\pic\eeread.c
+[v _eeprom_read eeprom_read `(uc  1 e 1 0 ]
+{
+[v eeprom_read@addr addr `uc  1 a 1 wreg ]
+[v eeprom_read@addr addr `uc  1 a 1 wreg ]
+"9
+[v eeprom_read@addr addr `uc  1 a 1 5 ]
+"12
+} 0
+"247 D:\carlo\Documents\MPLABXProjects\discadorpic\main.c
+[v _armazenar armazenar `(v  1 e 1 0 ]
+{
+"256
+[v armazenar@i_151 i `i  1 a 2 15 ]
+"252
+[v armazenar@i i `i  1 a 2 13 ]
+"268
+} 0
+"6 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\pic\eewrite.c
+[v _eeprom_write eeprom_write `(v  1 e 1 0 ]
+{
+[v eeprom_write@addr addr `uc  1 a 1 wreg ]
+[v eeprom_write@addr addr `uc  1 a 1 wreg ]
+[v eeprom_write@value value `uc  1 p 1 4 ]
+[v eeprom_write@addr addr `uc  1 a 1 6 ]
+"9
+} 0
+"119 D:\carlo\Documents\MPLABXProjects\discadorpic\main.c
+[v _adicionar adicionar `(v  1 e 1 0 ]
+{
+"136
+} 0
+"7 D:\carlo\Documents\MPLABXProjects\discadorpic\teclado.c
+[v _tc_tecla tc_tecla `(uc  1 e 1 0 ]
+{
+"8
+[v tc_tecla@to to `ui  1 a 2 8 ]
+"10
+[v tc_tecla@ret ret `uc  1 a 1 11 ]
+"9
+[v tc_tecla@i i `uc  1 a 1 10 ]
+"11
+[v tc_tecla@tmp tmp `uc  1 a 1 7 ]
+"7
+[v tc_tecla@timeout timeout `ui  1 p 2 3 ]
+"53
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 6 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 4 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 7 ]
+"51
+} 0
+"85 D:\carlo\Documents\MPLABXProjects\discadorpic\lcd.c
+[v _lcd_str lcd_str `(v  1 e 1 0 ]
+{
+"87
+[v lcd_str@i i `uc  1 a 1 6 ]
+"85
+[v lcd_str@str str `*.26DCCuc  1 p 2 3 ]
+"94
+} 0
+"55
+[v _lcd_dat lcd_dat `(v  1 e 1 0 ]
+{
+[v lcd_dat@val val `uc  1 a 1 wreg ]
+[v lcd_dat@val val `uc  1 a 1 wreg ]
+"57
+[v lcd_dat@val val `uc  1 a 1 7 ]
+"64
+} 0
+"138 D:\carlo\Documents\MPLABXProjects\discadorpic\main.c
+[v _ativaModo ativaModo `(v  1 e 1 0 ]
+{
+"140
+} 0
+"66 D:\carlo\Documents\MPLABXProjects\discadorpic\lcd.c
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+{
+"83
+} 0
+"44
+[v _lcd_cmd lcd_cmd `(v  1 e 1 0 ]
+{
+[v lcd_cmd@val val `uc  1 a 1 wreg ]
+[v lcd_cmd@val val `uc  1 a 1 wreg ]
+"46
+[v lcd_cmd@val val `uc  1 a 1 7 ]
+"53
+} 0
+"30
+[v _lcd_wr lcd_wr `(v  1 e 1 0 ]
+{
+[v lcd_wr@val val `uc  1 a 1 wreg ]
+"32
+[v lcd_wr@i i `uc  1 a 1 6 ]
+"30
+[v lcd_wr@val val `uc  1 a 1 wreg ]
+"34
+[v lcd_wr@val val `uc  1 a 1 5 ]
+"42
+} 0
+"26 D:\carlo\Documents\MPLABXProjects\discadorpic\atraso.c
+[v _atraso_ms atraso_ms `(v  1 e 1 0 ]
+{
+"28
+[v atraso_ms@i i `ui  1 a 2 0 ]
+"29
+[v atraso_ms@j j `uc  1 a 1 2 ]
+"26
+[v atraso_ms@valor valor `ui  1 p 2 4 ]
+"44
+} 0
+"63 D:\carlo\Documents\MPLABXProjects\discadorpic\main.c
+[v _interrupcao interrupcao `II(v  1 e 1 0 ]
+{
+"65
+} 0

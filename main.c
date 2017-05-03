@@ -48,9 +48,11 @@ int main() {
     lcd_init();
     lcd_cmd(L_CLR);
 
-    eeprom_write(0x0, 0);
-    endereco = 0x0;
-    endereco = eeprom_read(endereco);
+    unsigned char val = eeprom_read(0x0);
+    if (val = 255) { // endereco vazio
+        eeprom_write(0x0, 0x1);
+        endereco = eeprom_read(0x0);
+    }
 
     while (1) {
         maquina();
@@ -165,7 +167,7 @@ void digitarNome() {
     }
     if (cont < 9) {
         for (; cont < 9; cont++) {
-            nome[cont] = ' ';
+            nome[cont] = '#';
         }
     }
     nome[9] = '\0';
@@ -195,7 +197,7 @@ void digitarNumero() {
     }
     if (cont < 9) {
         for (; cont < 9; cont++) {
-            numero[cont] = ' ';
+            numero[cont] = '#';
         }
     }
     numero[9] = '\0';
@@ -218,7 +220,7 @@ void buscar() {
                 break;
             }
         }
-        end += 10;
+        end += 9;
         if (achou) {
             for (int i = 0; i < 10; i++) {
                 nome[i] = eeprom_read(end);

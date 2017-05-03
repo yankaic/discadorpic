@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Dialler.X
+PROJECTNAME=discadorpic
 
 # Active Configuration
 DEFAULTCONF=default
